@@ -1,20 +1,20 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider }             from 'react-redux';
 import ReactNativeWebHelloWorld from './App';
+import App from './App2';
 import DevTools                 from './DevTools';
 
 export default class Root extends Component {
   render() {
     return (
-      <Provider store={this.props.store}>
         <div>
-          <ReactNativeWebHelloWorld />
-          <DevTools />
+          <App />
         </div>
-      </Provider>
     );
   }
 }
+
+//<DevTools />
 
 Root.propTypes = {
   store: PropTypes.object.isRequired,

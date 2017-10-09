@@ -10,26 +10,28 @@ export default class ProfessorsForm extends Component {
             password:'',
             codiUdg:'',
         }
+
+        this.onChange = this.onChange.bind(this)
     }
     render(){
         return(
         <View className="windowed-form" style={FormStyles.mainDiv}>
             <View style={FormStyles.inputGroup}>
                 <Text style={FormStyles.title}>Nom</Text>
-                <TextInput className="focusable" style={FormStyles.input} onChange={this.handleChange.bind(this,"nom")} value={this.state.nom}></TextInput>
+                <TextInput className="focusable" style={FormStyles.input} onChange={this.onChange} value={this.state.nom}></TextInput>
             </View>
             <View style={FormStyles.inputGroup}>
                 <Text style={FormStyles.title}>Correu</Text>
-                <TextInput className="focusable" style={FormStyles.input} onChange={this.handleChange.bind(this,"correu")} value={this.state.correu}></TextInput>
+                <TextInput className="focusable" style={FormStyles.input} onChange={this.onChange} value={this.state.correu}></TextInput>
             </View>
             <View style={FormStyles.inputGroup}>
                 <Text style={FormStyles.title}>Password</Text>
-                <TextInput className="focusable" style={FormStyles.input} onChange={this.handleChange.bind(this,"password")} value={this.state.password}
+                <TextInput className="focusable" style={FormStyles.input} onChange={this.onChange} value={this.state.password}
           secureTextEntry={true}></TextInput>
             </View>
             <View style={FormStyles.inputGroup}>
                 <Text style={FormStyles.title}>Codi udg</Text>
-                <TextInput className="focusable" style={FormStyles.input} onChange={this.handleChange.bind(this,"codiUdg")} value={this.state.codiUdg}></TextInput>
+                <TextInput className="focusable" style={FormStyles.input} onChange={this.onChange} value={this.state.codiUdg}></TextInput>
             </View>
             <Button title="Guardar" onPress={this.submit.bind(this)}>
                 
@@ -39,19 +41,8 @@ export default class ProfessorsForm extends Component {
         )
     }
 
-    handleChange(property,e) {
-        if (property == "nom"){
-             this.setState({ nom: e.target.value });
-        }else if (property == "password"){
-            this.setState({ password: e.target.value });
-        }else if (property == "correu"){
-            this.setState({ correu: e.target.value });
-        }else if (property == "codiUdg"){
-            this.setState({ codiUdg: e.target.value });
-        }else{
-            console.error("change not detected!")
-        }
-       
+    onChange(e) { 
+        this.setState({[e.target.name]:e.target.value})      
     }
 
     submit(state){

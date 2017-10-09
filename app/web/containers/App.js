@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Header     from '../containers/components/Header';
 import ProfessorsForm from '../containers/components/ProfessorsForm'
 import HelloWorld from '../containers/components/HelloWorld';
+import NavigationBar from '../containers/components/NavigationBar';
 // actions
 import {
   toggleColor,
@@ -18,8 +19,8 @@ class ReactNativeWebHelloWorld extends Component {
 
     return (
       <div className="react-native-web">
-        <Header />
-        <ProfessorsForm />
+        <NavigationBar />
+        
       </div>
     );
   }
