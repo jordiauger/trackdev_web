@@ -18,6 +18,7 @@ class LoginForm extends React.Component{
 
     onSubmit(e){
         e.preventDefault();
+        
         console.log(this.state);
     }
 
@@ -51,5 +52,10 @@ class LoginForm extends React.Component{
         
     }
 }
+
+LoginForm.propTypes = {
+    userLoginRequest: React.PropTypes.func.isRequired
+}
+
 
 export default LoginForm;

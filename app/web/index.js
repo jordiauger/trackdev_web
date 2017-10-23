@@ -1,18 +1,28 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import thunk        from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 
 import App from './containers/App2';
 import LoginPage from './containers/components/login/LoginPage';
 
+const store = createStore(
+    (state = {}) => state,
+    applyMiddleware(thunk)
+);
+
 render((
-  <Router>
-    <App>
-        <Switch>
-            <Route path="/login" component={LoginPage} />
-        </Switch>
-    </App>
-  </Router>
+  <Provider store={store}>
+    <Router>
+      <App>
+          <Switch>
+              <Route path="/login" component={LoginPage} />
+          </Switch>
+      </App>
+    </Router>
+  </Provider>
 ), document.getElementById('root'));
 
 
