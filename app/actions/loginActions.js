@@ -17,7 +17,7 @@ function receiveLogin(subreddit, json) {
 }
 
 export function userLoginRequest(userData){
-    return dispatch =>{
+    return dispatch => {
         dispatch(requestLogin(userData))
         return fetch("http://localhost:3000/Users/login", {
             method: "POST",
@@ -25,14 +25,8 @@ export function userLoginRequest(userData){
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(this.state)
-        }).then((response) => {
-            response => response.json(),
-            error => console.log('An error occured.', error)
-        })
-        .then((recurso) => {
-            dispatch(receiveLogin(userData,recurso))
-        })
-        
+            body: JSON.stringify(userData)
+        }).then(response => dispatch(receiveLogin(userData,response.json())),
+                error => console.log('An error occured.', error))
     }
 }

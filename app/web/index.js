@@ -8,13 +8,15 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './containers/App2';
 import LoginPage from './containers/components/login/LoginPage';
 
+import configureStore from '../store/configureStore.dev'
+
 const store = createStore(
     (state = {}) => state,
     applyMiddleware(thunk)
 );
 
 render((
-  <Provider store={store}>
+  <Provider store={configureStore()}>
     <Router>
       <App>
           <Switch>

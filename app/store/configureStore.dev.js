@@ -16,7 +16,10 @@ const createDevStoreWithMiddleware = compose(
 )(createStore);
 
 export default function configureStore() {
-  const store = createDevStoreWithMiddleware(StockApp);
+  const store = createStore(
+    StockApp,
+    applyMiddleware(thunk)
+  )
 
   // enable webpack hot module replacement for reducers
   if (module.hot) {
