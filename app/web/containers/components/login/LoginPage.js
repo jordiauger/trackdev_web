@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import LoginForm from './LoginForm';
 import { connect } from 'react-redux';
 import { userLoginRequest } from '../../../../actions/loginActions' 
 
 class LoginPage extends React.Component{
-    render(){
-        const { userLoginRequest } = this.props;
+    render() {
         return (
             <div className="row">
                 <div className="col-md-4 col-md-offset-4">
@@ -16,8 +16,4 @@ class LoginPage extends React.Component{
     }
 }
 
-LoginPage.propTypes = {
-    userLoginRequest: React.PropTypes.func.isRequired
-}
-
-export default connect(null,userLoginRequest)(LoginPage);
+export default connect(null, userLoginRequest)(LoginPage);
