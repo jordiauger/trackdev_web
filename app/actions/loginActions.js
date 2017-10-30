@@ -16,6 +16,16 @@ function receiveLogin(subreddit, json) {
   }
 }
 
+
+export const ERROR_LOGIN = 'ERROR_LOGIN'
+function errorLogin(error) {
+  return {
+    type: ERROR_LOGIN,
+    error
+  }
+}
+
+
 export function userLoginRequest(userData){
     return dispatch => {
         dispatch(requestLogin(userData))
@@ -27,6 +37,6 @@ export function userLoginRequest(userData){
             },
             body: JSON.stringify(userData)
         }).then(response => dispatch(receiveLogin(userData,response.json())),
-                error => console.log('An error occured.', error))
+                error => dispatch(errorLogin(error)))
     }
 }
