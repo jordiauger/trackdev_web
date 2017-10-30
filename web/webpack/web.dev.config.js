@@ -53,8 +53,7 @@ module.exports = {
         PLATFORM_ENV: JSON.stringify('web'),
       },
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
   ],
 };
