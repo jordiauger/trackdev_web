@@ -19,7 +19,10 @@ class LoginForm extends React.Component{
 
     onSubmit(e){
         e.preventDefault();
-        
+        this.props.userLoginRequest(this.state).then(
+            ()=>{},
+            (data)=>this.setState({errors:data})
+        );
         console.log(this.state);
     }
 

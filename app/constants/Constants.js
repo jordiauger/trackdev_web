@@ -5,4 +5,8 @@ export const EXAMPLE_REQUEST_DATA = 'EXAMPLE_REQUEST_DATA';
 
 export const ADD_USER = 'ADD_USER';
 export const UPDATE_USER = 'UPDATE_USER';
-export const DELETE_USER = 'DELETE_USER'; 
+export const DELETE_USER = 'DELETE_USER';
+
+export const REQUEST_LOGIN = 'REQUEST_LOGIN';
+export const RECEIVE_LOGIN = 'RECEIVE_LOGIN';
+export const ERROR_LOGIN = 'ERROR_LOGIN';

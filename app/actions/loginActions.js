@@ -1,4 +1,4 @@
-export const REQUEST_LOGIN = 'REQUEST_LOGIN'
+import {REQUEST_LOGIN,RECEIVE_LOGIN,ERROR_LOGIN} from '../constants/Constants.js';
 function requestLogin(userData) {
   return {
     type: REQUEST_LOGIN,
@@ -6,18 +6,15 @@ function requestLogin(userData) {
   }
 }
 
-export const RECEIVE_LOGIN = 'RECEIVE_LOGIN'
-function receiveLogin(subreddit, json) {
+function receiveLogin(json) {
   return {
-    type: RECEIVE_POSTS,
-    subreddit,
-    posts: json.data.children.map(child => child.data),
-    receivedAt: Date.now()
+    type: RECEIVE_LOGIN,
+    json
   }
 }
 
 
-export const ERROR_LOGIN = 'ERROR_LOGIN'
+
 function errorLogin(error) {
   return {
     type: ERROR_LOGIN,
@@ -36,7 +33,7 @@ export function userLoginRequest(userData){
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(userData)
-        }).then(response => dispatch(receiveLogin(userData,response.json())),
+        }).then(response => dispatch(receiveLogin(response.json())),
                 error => dispatch(errorLogin(error)))
     }
 }

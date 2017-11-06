@@ -26,4 +26,4 @@ const adminPanel = (state = [],action) => {
     }
 }
 
-export defaut adminPanel;
+export default adminPanel;
