@@ -18,7 +18,7 @@ class LoginPage extends React.Component{
 }
 
 LoginPage.propTypes = {
-    userLoginRequest: React.PropTypes.func.isRequired
+    userLoginRequest: PropTypes.func.isRequired
 }
 
 export default connect(null, {userLoginRequest})(LoginPage);
