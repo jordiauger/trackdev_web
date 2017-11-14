@@ -1,32 +1,28 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk        from 'redux-thunk';
+import { persistState } from 'redux-devtools';
 import StockApp     from '../reducers';
-import createLogger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import DevTools     from '../web/containers/DevTools';
 
-// create a store that has redux-thunk middleware, and dev tooling enabled.
-// the logger middleware logs the previous state, the action, and the next
-// state in the browser's console for easy debuggin' and instrementing the
-// dev tools allows for us to commit different actions and go forwards and
-// backwards in time using magic
-const createDevStoreWithMiddleware = compose(
+
+const enhancer = compose(
   applyMiddleware(thunk),
-  applyMiddleware(createLogger()),
-  DevTools.instrument()
-)(createStore);
-
-export default function configureStore() {
-  const store = createStore(
-    StockApp,
-    applyMiddleware(thunk)
+  DevTools.instrument(),
+  persistState(
+    window.location.href.match(
+      /[?&]debug_session=([^&#]+)\b/
+    )
   )
+);
 
-  // enable webpack hot module replacement for reducers
+export default function configureStore(initialState) {
+  const store = createStore(StockApp, initialState, enhancer);
+
   if (module.hot) {
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers');
-      store.replaceReducer(nextRootReducer);
-    });
+    module.hot.accept('../reducers', () =>
+      store.replaceReducer(require('../reducers').default)
+    );
   }
 
   return store;

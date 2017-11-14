@@ -1,12 +1,17 @@
 const path = require('path');
 const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: path.join(__dirname, '../public'),
+    hot: true
+  },
   entry: [
-    'webpack-hot-middleware/client',
-    'babel-polyfill',
-    path.join(__dirname, '../../app/web/index'),
+    "react-hot-loader/patch",
+    path.join(__dirname, '../../app/web/index.js')
   ],
   output: {
     path: path.join(__dirname, '../public'),
@@ -28,14 +33,14 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['es2015', 'react'],
-          plugins: [['react-transform', {
-            transforms: [{
-              transform: 'react-transform-hmr',
-              imports: ['react'],
-              // this is important for Webpack HMR:
-              locals: ['module']
-            }],
-          }]],
+          // plugins: [['react-transform', {
+            // transforms: [{
+            //   transform: 'react-transform-hmr',
+            //   imports: ['react'],
+            //   // this is important for Webpack HMR:
+            //   locals: ['module']
+            // }],
+          // }]],
         },
       },{
         test: /\.(jpe?g|png|gif|svg)$/i,
@@ -53,7 +58,11 @@ module.exports = {
         PLATFORM_ENV: JSON.stringify('web'),
       },
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new CleanWebpackPlugin(['public']),
+    // new HtmlWebpackPlugin({
+    //   title: 'Hot Module Replacement'
+    // }),
+    new webpack.NamedModulesPlugin()
   ],
 };
