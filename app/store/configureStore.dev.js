@@ -5,10 +5,11 @@ import StockApp     from '../reducers';
 import { createLogger } from 'redux-logger';
 import DevTools     from '../web/containers/DevTools';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const enhancer = compose(
+const enhancer = composeEnhancers(
   applyMiddleware(thunk),
-  DevTools.instrument(),
+  //DevTools.instrument(),
   persistState(
     window.location.href.match(
       /[?&]debug_session=([^&#]+)\b/
