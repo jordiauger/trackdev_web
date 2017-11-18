@@ -20,7 +20,6 @@ export default class Root extends Component {
               </Switch>
             </TrackDevApp>
           </Router>
-          <DevTools/>
         </div>
       </Provider>
     );
