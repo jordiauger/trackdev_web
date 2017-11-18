@@ -1,43 +1,20 @@
+// import 'todomvc-app-css/index.css';
 import React from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import thunk        from 'redux-thunk';
-import { createStore, applyMiddleware } from 'redux';
+import ReactDOM from 'react-dom'
+import { AppContainer } from 'react-hot-loader';
+import Root from './containers/Root';
 
-import App from './containers/App2';
-import LoginPage from './containers/components/login/LoginPage';
+const render = Component => {
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    document.getElementById('root'),
+  )
+}
 
-import configureStore from '../store/configureStore.dev'
+render(Root)
 
-const store = createStore(
-    (state = {}) => state,
-    applyMiddleware(thunk)
-);
-
-render((
-  <Provider store={configureStore()}>
-    <Router>
-      <App>
-          <Switch>
-              <Route path="/login" component={LoginPage} />
-          </Switch>
-      </App>
-    </Router>
-  </Provider>
-), document.getElementById('root'));
-
-
-
-/**import React          from 'react';
-import { render }     from 'react-dom';
-import Root           from './containers/Root';
-import configureStore from '../store/configureStore';
-
-// load our css
-require('./styles/style.less');
-
-const store = configureStore();
-const rootElement = document.getElementById('root');
-
-render( <Root store={store} />, rootElement );**/
+if (module.hot) {
+  module.hot.accept('./containers/Root', () => { render(Root) })
+}
