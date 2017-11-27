@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import LoginForm from './LoginForm';
+import LoginForm from '../../../../components/LoginForm';
 import { connect } from 'react-redux';
 import { userLoginRequest } from '../../../../actions/loginActions' 
 
