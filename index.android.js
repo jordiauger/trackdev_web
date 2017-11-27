@@ -1,16 +1,16 @@
+// https://github.com/facebook/react-native/issues/9599
+if (typeof global.self === "undefined") global.self = global;
+
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-import Root           from './app/native/containers/Root';
-import configureStore from './app/store/configureStore.prod.js';
+import Root from './app/native/containers/Root'
 
-const store = configureStore();
-
-class ReactNativeelloWorld extends Component {
+class TrackDev extends Component {
   render() {
     return (
-      <Root store={store} />
+      <Root/>
     );
   }
 }
 
-AppRegistry.registerComponent('ReactNativeWebHelloWorld', () => ReactNativeelloWorld);
+AppRegistry.registerComponent('TrackDev', () => TrackDev);
