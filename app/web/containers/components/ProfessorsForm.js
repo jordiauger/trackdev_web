@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Text, TextInput, View, StyleSheet,Button } from 'react-native-web';
+import {Text, TextInput, View, StyleSheet,Button } from 'react-native';
 
 export default class ProfessorsForm extends Component {
     constructor(props) {

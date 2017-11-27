@@ -2,14 +2,11 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk        from 'redux-thunk';
 import { persistState } from 'redux-devtools';
 import StockApp     from '../reducers';
-import { createLogger } from 'redux-logger';
-import DevTools     from '../web/containers/DevTools';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancer = composeEnhancers(
   applyMiddleware(thunk),
-  //DevTools.instrument(),
   persistState(
     window.location.href.match(
       /[?&]debug_session=([^&#]+)\b/

@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { connect }  from 'react-redux';
 import { appStyle } from '../styles/styles';
@@ -11,7 +12,7 @@ import {
 } from '../../actions/actions';
 
 /** The app entry point */
-class ReactNativeWebHelloWorld extends Component {
+class TrackDev extends Component {
   render() {
     // injected by connect call
     const {dispatch, color, data} = this.props;
@@ -28,7 +29,7 @@ class ReactNativeWebHelloWorld extends Component {
   }
 }
 
-ReactNativeWebHelloWorld.propTypes = {
+TrackDev.propTypes = {
   dispatch: PropTypes.func.isRequired,
   color: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,
@@ -37,4 +38,4 @@ ReactNativeWebHelloWorld.propTypes = {
 const select = state => state;
 
 // Wrap the component to inject dispatch and state into it
-export default connect(select)(ReactNativeWebHelloWorld);
+export default connect(select)(TrackDev);

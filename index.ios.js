@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import { AppRegistry } from 'react-native';
-import Root           from './app/native/containers/Root';
-import configureStore from './app/store/configureStore.prod.js';
+import { AppRegistry, View, Text } from 'react-native';
 
-const store = configureStore();
-
-class ReactNativeHelloWorld extends Component {
+class TrackDev extends Component {
   render() {
     return (
-      <Root store={store} />
+      <View>
+        <Text>Jelou</Text>
+      </View>
     );
   }
 }
 
-AppRegistry.registerComponent('ReactNativeWebHelloWorld', () => ReactNativeHelloWorld);
+AppRegistry.registerComponent('TrackDev', () => TrackDev);
