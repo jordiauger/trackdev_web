@@ -1,17 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
-class LoginForm extends React.Component{
+class RegisterForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             username:'',
-            pwd:''
+            pwd:'',
+            correu:'',
+            tipus:3,
+            codiUdg:''
         }
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+    }
+
+    componentDidMount(){
+        console.log(this.props.params);
+        /*
+            let token = paramToken;
+            this.props.userRegisterRequest(token).then(
+                ()=>{},
+                (data)=>this.setState({errors:data})
+            );
+
+        */
     }
 
     onChange(e){
@@ -20,16 +34,38 @@ class LoginForm extends React.Component{
 
     onSubmit(e){
         e.preventDefault();
-        this.props.userLoginRequest(this.state).then(
+        this.props.userRegisterRequest(this.state).then(
             ()=>{},
-            ({data})=>this.setState()
-        )
+            (data)=>this.setState({errors:data})
+        );
         console.log(this.state);
     }
 
     render(){
+        let codiUdgForm = null;
+        if (this.state.tipus == 3){
+            codiUdgForm = <div className="form-group">
+                <label className="control-label">Codi Udg</label>
+                <input
+                    value={this.state.codiUdg}
+                    onChange={this.onChange}
+                    name="pwd"
+                    className="form-control" />
+        
+            </div>    
+        }
+
         return(
             <form onSubmit={this.onSubmit}>
+                <div className="form-group">
+                    <label className="control-label">Correu</label>
+                    <input
+                        value={this.state.correu}
+                        name="correu"
+                        className="form-control"
+                        disabled />
+               
+                </div>
                 <div className="form-group">
                     <label className="control-label">Username</label>
                     <input
@@ -49,8 +85,9 @@ class LoginForm extends React.Component{
                         className="form-control" />
                
                 </div>
+                {codiUdgForm}
                  <button className="btn btn-primary btn-lg">
-                    Login
+                    Register
                 </button>
             </form>
         );
@@ -58,9 +95,9 @@ class LoginForm extends React.Component{
     }
 }
 
-LoginForm.propTypes = {
-    userLoginRequest: PropTypes.func.isRequired
+RegisterForm.propTypes = {
+    userRegisterRequest: PropTypes.func.isRequired
 }
 
 
-export default LoginForm;
+export default RegisterForm;
