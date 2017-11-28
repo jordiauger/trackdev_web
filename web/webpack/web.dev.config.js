@@ -7,7 +7,8 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, '../public'),
-    hot: true
+    hot: true,
+    historyApiFallback: true
   },
   entry: [
     "react-hot-loader/patch",
