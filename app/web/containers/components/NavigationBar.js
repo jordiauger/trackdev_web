@@ -1,20 +1,21 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { Navbar, Nav, NavItem } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 export default ()=> {
     return (
-                
-        <nav className="navbar navbar-default">
-            <div className="container-fluid">
-                <div className="navbar-header">
-                    <a className="navbar-brand" href="#">Home</a>
-                </div>
-                <div className="collapse navbar-collapse" >
-                    <ul className="nav navbar-nav navbar-right">
-                        <li><Link to={'/login'}>Login</Link></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+      <Navbar>
+          <Navbar.Header>
+              <Navbar.Brand>
+                  <Link to={'/'}>Home</Link>
+              </Navbar.Brand>
+          </Navbar.Header>
+          <Nav pullRight>
+              <LinkContainer to="/login">
+                <NavItem eventKey={1}>Login</NavItem>
+              </LinkContainer>
+          </Nav>
+      </Navbar>
     );
 }
