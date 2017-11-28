@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Route } from 'react-router-dom'
 import NavigationBar from './components/NavigationBar'
 import Main from './Main';
-import LoginPage from './components/login/LoginPage'
+import LoginPage from './LoginPage'
 
 export default class Root extends Component {
   render() {
