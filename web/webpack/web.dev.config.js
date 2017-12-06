@@ -7,7 +7,8 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     contentBase: path.join(__dirname, '../public'),
-    hot: true
+    hot: true,
+    historyApiFallback: true
   },
   entry: [
     "react-hot-loader/patch",
@@ -32,15 +33,8 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'react'],
-          // plugins: [['react-transform', {
-            // transforms: [{
-            //   transform: 'react-transform-hmr',
-            //   imports: ['react'],
-            //   // this is important for Webpack HMR:
-            //   locals: ['module']
-            // }],
-          // }]],
+          presets: ['env', 'stage-0', 'react'],
+          plugins: ['react-hot-loader/babel', 'react-native-web/babel', 'transform-flow-strip-types']
         },
       },{
         test: /\.(jpe?g|png|gif|svg)$/i,

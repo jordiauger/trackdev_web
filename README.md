@@ -1,40 +1,28 @@
 # TrackDev
 
-A way to share application logic between a React Web app and a React Native app,
-while keeping the individual component rendering unique to each platform.
+A web+mobile client for the TrackDev application. It is implemented using `react`, `react-native` and `react-native-web` in order to share application logic between the React Web app and the React Native app, while keeping the individual component rendering unique to each platform.
 
 For a thorough discussion of this project, please read my [Blog Post][bg] about
 it.
-
-## The app
-
-React Native                              |  React Web
-:----------------------------------------:|:-------------------------------------:
-![native](http://i.imgur.com/OvstUk4.gif) | ![web](http://i.imgur.com/siF0aYJ.gif)
-
-The app itself is a very simple Hello World (ish) app. Not only does it show
-"Hello World"... but when you click (or tap) it... it changes from red to blue!
-woah!
 
 ## Technologies Used
 
   - [React](https://facebook.github.io/react/)
   - [React Native](https://facebook.github.io/react-native/)
+  - [React Native Web](https://github.com/necolas/react-native-web)
   - [Redux](http://redux.js.org/)
   - [Webpack](https://webpack.github.io/)
   - [Babel](https://babeljs.io/)
 
 ## Directory Structure
 
+The native app uses the `react-native-cli` package so it can contain native code.
+
 `android` houses the Android project files, `ios` houses the iOS project files,
 and `web` houses the `webpack` configs and `index.html` (it is also the
 destination of our minified bundle).
 
-The `app` itself is primarily based on my [React/Webpack/Redux Boilerplate][bp],
-for more info on that head over there. The only key difference can be found in
-`app/native`, and `app/web`. What's going on here is both the native app and
-web app are sharing their core application logic, while keeping the individual
-rendering separate.
+The `app` basic structure itself is primarily based on [React Native Web Hello World](https://github.com/kauffecup/react-native-web-hello-world), for more info on that head over there.
 
 The reasoning for this is twofold - for one, React Native/React wasn't designed
 to be a "write once, run everywhere" framework. Facebook constantly calls it a
@@ -45,8 +33,7 @@ without some crazy aliases.
 
 ## Entry Points
 
-The entry point for the iOS app is `index.ios.js`, for android is
-`index.android.js`, and for the web app is `app/web/index.js`.
+The entry point for the native app is `index.js`, and for the web app is `app/web/index.js`.
 
 ## Configured Scripts
 
