@@ -1,4 +1,3 @@
 {
-  "presets": ["env", "stage-0", "react", "react-native"],
-  "plugins": ["react-hot-loader/babel", "react-native-web/babel", "transform-flow-strip-types"]
+  "presets": ["react-native"]
 }
