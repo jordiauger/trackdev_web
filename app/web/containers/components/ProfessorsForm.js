@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Text, TextInput, View, StyleSheet,Button } from 'react-native';
+import { FormStyles } from '../../../native/styles/nativeStyles.js';
 
 export default class ProfessorsForm extends Component {
     constructor(props) {
@@ -50,28 +51,3 @@ export default class ProfessorsForm extends Component {
     }
 }
 
-const FormStyles = StyleSheet.create({
-  mainDiv: {
-    flexGrow: 1,
-    justifyContent: 'center'
-  },
-  inputGroup:{
-    marginTop:0,
-    marginBottom:10,
-  },
-  title: {
-    fontSize: '0.8rem',
-    fontWeight: 'bold',
-    lineHeight: '1.4rem',
-    color:'#9a9a9a',
-    fontFamily: 'Lato, Helvetica, sans-serif',
-  },
-  input:{
-      fontSize:16,
-      color:'#828181',
-      borderStyle:'solid',
-      borderWidth:1,
-      borderColor:'#CDCDCD',
-      padding:'0.2rem'
-  }
-})

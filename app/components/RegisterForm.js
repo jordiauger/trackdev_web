@@ -1,5 +1,7 @@
 import React from 'react';
+import { View, Button, TextInput, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import {FormStyles} from '../native/styles/nativeStyles';
 
 class RegisterForm extends React.Component{
     constructor(props){
@@ -17,7 +19,7 @@ class RegisterForm extends React.Component{
     }
 
     componentDidMount(){
-        console.log(this.props.params);
+        console.log(this.props);
         /*
             let token = paramToken;
             this.props.userRegisterRequest(token).then(
@@ -44,52 +46,47 @@ class RegisterForm extends React.Component{
     render(){
         let codiUdgForm = null;
         if (this.state.tipus == 3){
-            codiUdgForm = <div className="form-group">
-                <label className="control-label">Codi Udg</label>
-                <input
+            codiUdgForm = <View style={FormStyles.inputGroup}>
+                <Text style={FormStyles.title}>Codi Udg</Text>
+                <TextInput
+                    style={FormStyles.input}
                     value={this.state.codiUdg}
-                    onChange={this.onChange}
-                    name="pwd"
-                    className="form-control" />
-        
-            </div>    
+                    onChange={this.onChange}/>
+            </View>
         }
-
         return(
-            <form onSubmit={this.onSubmit}>
-                <div className="form-group">
-                    <label className="control-label">Correu</label>
-                    <input
+            <View style={FormStyles.mainDiv}>
+                <View style={FormStyles.inputGroup}>
+                    <Text style={FormStyles.title}>Correu</Text>
+                    <TextInput
+                        style={FormStyles.input}
                         value={this.state.correu}
-                        name="correu"
-                        className="form-control"
-                        disabled />
+                        disabled
+                    />
                
-                </div>
-                <div className="form-group">
-                    <label className="control-label">Username</label>
-                    <input
+                </View>
+                <View style={FormStyles.inputGroup}>
+                    <Text style={FormStyles.title}>Username</Text>
+                    <TextInput
+                        style={FormStyles.input}
                         value={this.state.username}
                         onChange={this.onChange}
-                        type="text"
-                        name="username"
-                        className="form-control" />
-                </div>
-                <div className="form-group">
-                    <label className="control-label">Password</label>
-                    <input
+                    />
+                </View>
+                <View style={FormStyles.inputGroup}>
+                    <Text style={FormStyles.title}>Password</Text>
+                    <TextInput
+                        style={FormStyles.input}
                         value={this.state.pwd}
                         onChange={this.onChange}
-                        type="password"
-                        name="pwd"
-                        className="form-control" />
+                        secureTextEntry={true}
+                    />
                
-                </div>
+                </View>
                 {codiUdgForm}
-                 <button className="btn btn-primary btn-lg">
-                    Register
-                </button>
-            </form>
+                 <Button onPress={this.onSubmit} title="Registrar">
+                 </Button>
+            </View>
         );
         
     }

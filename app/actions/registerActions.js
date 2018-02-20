@@ -22,12 +22,6 @@ function errorRegister(error) {
   }
 }
 
-function requestUserRegister(userData) {
-  return {
-    type: REQUEST_USER_REGISTER,
-    userData
-  }
-}
 
 function receiveUserRegister(json) {
   return {
@@ -40,7 +34,7 @@ function receiveUserRegister(json) {
 export function userRegisterRequest(userData){
     return dispatch => {
         dispatch(requestRegister(userData))
-        return fetch("http://localhost:3000/Users/register", {
+        return fetch("http://localhost:3000/api/users/register", {
             method: "POST",
             headers: {
                 'Accept': 'application/json',
@@ -54,7 +48,7 @@ export function userRegisterRequest(userData){
 
 export function userRegisterGetInfo(token){
     return dispatch => {
-        return fetch("http://localhost:3000/Users/register?token="+token, {
+        return fetch("http://localhost:3000/api/users/register?token="+token, {
             method: "GET",
             headers: {
                 'Accept': 'application/json',
