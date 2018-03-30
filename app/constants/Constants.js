@@ -7,6 +7,10 @@ export const ADD_USER = 'ADD_USER';
 export const UPDATE_USER = 'UPDATE_USER';
 export const DELETE_USER = 'DELETE_USER';
 
+export const ADD_COURSE = 'ADD_COURSE';
+export const UPDATE_COURSE = 'UPDATE_COURSE';
+export const DELETE_COURSE = 'DELETE_COURSE';
+
 export const REQUEST_LOGIN = 'REQUEST_LOGIN';
 export const RECEIVE_LOGIN = 'RECEIVE_LOGIN';
 export const ERROR_LOGIN = 'ERROR_LOGIN';
@@ -19,3 +23,5 @@ export const ERROR_REGISTER = 'ERROR_REGISTER';
 
 export const REQUEST_USER_REGISTER = 'REQUEST_LOGIN';
 export const RECEIVE_USER_REGISTER = 'RECEIVE_LOGIN';
+
+export const RECEIVE_DATA_ADMIN_PANEL = "RECEIVE_DATA_ADMIN_PANEL";

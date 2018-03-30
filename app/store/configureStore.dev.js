@@ -1,12 +1,14 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk        from 'redux-thunk';
 import { persistState } from 'redux-devtools';
-import StockApp     from '../reducers';
+import reducer from '../reducers'
+import middleware from '../middleware'
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancer = composeEnhancers(
-  applyMiddleware(thunk),
+  middleware,
   persistState(
     window.location.href.match(
       /[?&]debug_session=([^&#]+)\b/
@@ -15,13 +17,6 @@ const enhancer = composeEnhancers(
 );
 
 export default function configureStore(initialState) {
-  const store = createStore(StockApp, initialState, enhancer);
-
-  if (module.hot) {
-    module.hot.accept('../reducers', () =>
-      store.replaceReducer(require('../reducers').default)
-    );
-  }
-
+  const store = createStore(reducer, initialState, enhancer);
   return store;
 }

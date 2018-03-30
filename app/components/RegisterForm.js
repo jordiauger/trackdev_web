@@ -30,8 +30,11 @@ class RegisterForm extends React.Component{
         */
     }
 
-    onChange(e){
-        this.setState({[e.target.name]:e.target.value})
+    onChange(key, value) {
+        this.setState(Object.assign(
+            {},
+            this.state,
+            { [key]: value }))
     }
 
     onSubmit(e){
@@ -51,7 +54,8 @@ class RegisterForm extends React.Component{
                 <TextInput
                     style={FormStyles.input}
                     value={this.state.codiUdg}
-                    onChange={this.onChange}/>
+                    onChangeText={(text) => this.onChange('codiUdg', text)}
+                />
             </View>
         }
         return(
@@ -63,14 +67,14 @@ class RegisterForm extends React.Component{
                         value={this.state.correu}
                         disabled
                     />
-               
+
                 </View>
                 <View style={FormStyles.inputGroup}>
                     <Text style={FormStyles.title}>Username</Text>
                     <TextInput
                         style={FormStyles.input}
                         value={this.state.username}
-                        onChange={this.onChange}
+                        onChangeText={(text) => this.onChange('username', text)}
                     />
                 </View>
                 <View style={FormStyles.inputGroup}>
@@ -78,7 +82,7 @@ class RegisterForm extends React.Component{
                     <TextInput
                         style={FormStyles.input}
                         value={this.state.pwd}
-                        onChange={this.onChange}
+                        onChangeText={(text) => this.onChange('pwd', text)}
                         secureTextEntry={true}
                     />
                
