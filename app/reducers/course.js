@@ -1,4 +1,4 @@
-import {ADD_COURSE,UPDATE_COURSE,DELETE_COURSE, RECEIVE_DATA_COURSE} from '../constants/Constants.js'
+import {ADD_COURSE,UPDATE_COURSE,DELETE_COURSE, RECEIVE_DATA_COURSE} from '../constants/Constants'
 
 const course = (state = {},action) => {
     switch(action.type){

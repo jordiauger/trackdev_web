@@ -1,4 +1,4 @@
-import {ADD_USER,UPDATE_USER,DELETE_USER, RECEIVE_DATA_ADMIN_PANEL} from '../constants/Constants.js'
+import {ADD_USER,UPDATE_USER,DELETE_USER, RECEIVE_DATA_ADMIN_PANEL} from '../constants/Constants'
 
 const adminPanelUsers = (state = {},action) => {
     switch(action.type){

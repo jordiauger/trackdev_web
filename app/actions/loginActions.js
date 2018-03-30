@@ -1,4 +1,4 @@
-import {REQUEST_LOGIN,RECEIVE_LOGIN,ERROR_LOGIN} from '../constants/Constants.js';
+import {REQUEST_LOGIN,RECEIVE_LOGIN,ERROR_LOGIN} from '../constants/Constants';
 function requestLogin(userData) {
   return {
     type: REQUEST_LOGIN,

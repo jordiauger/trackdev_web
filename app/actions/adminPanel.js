@@ -1,4 +1,4 @@
-import {ADD_USER,UPDATE_USER,DELETE_USER, RECEIVE_DATA_ADMIN_PANEL} from '../constants/constants.js'
+import {ADD_USER,UPDATE_USER,DELETE_USER, RECEIVE_DATA_ADMIN_PANEL} from '../constants/Constants'
 import {fetchUsers,addUsersByEmailAPI} from '../utils/api'
 
 function addUserAction(user) {

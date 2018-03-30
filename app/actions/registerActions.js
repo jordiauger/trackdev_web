@@ -1,4 +1,4 @@
-import {REQUEST_REGISTER,RECEIVE_REGISTER,ERROR_REGISTER} from '../constants/Constants.js';
+import {REQUEST_REGISTER,RECEIVE_REGISTER,ERROR_REGISTER} from '../constants/Constants';
 function requestRegister(userData) {
   return {
     type: REQUEST_REGISTER,
