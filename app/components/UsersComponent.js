@@ -26,7 +26,6 @@ function ListFilter(props){
 class UsersComponent extends React.Component {
     constructor(props){
         super(props);
-        console.log(props);
         this.state = {
             selected : 'All',
             typeUsersToAdd:"2",
@@ -105,7 +104,7 @@ class UsersComponent extends React.Component {
                     selected = {this.state.selected}
                     update = {this.update}
                     options = {filters} />
-                <UserList users={this.state.users} />
+                <UserList  />
 
             </View>
         )

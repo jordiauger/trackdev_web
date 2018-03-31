@@ -2,6 +2,10 @@ import React from 'react';
 import { View, Button, TextInput, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import {FormStyles} from '../native/styles/nativeStyles';
+import {handleLoginAction} from '../actions/authedUser';
+import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom'
+
 
 class LoginForm extends React.Component{
     constructor(props){
@@ -23,11 +27,8 @@ class LoginForm extends React.Component{
     }
 
     onSubmit() {
-        this.props.userLoginRequest(this.state).then(
-            ()=>{},
-            (data)=>this.setState({errors:data})
-        );
-        console.log(this.state);
+        this.props.dispatch(handleLoginAction(this.state))
+        this.props.history.push("/");
     }
 
     render() {
@@ -57,9 +58,4 @@ class LoginForm extends React.Component{
     }
 }
 
-LoginForm.propTypes = {
-    userLoginRequest: PropTypes.func.isRequired
-}
-
-
-export default LoginForm;
+export default connect()(withRouter(LoginForm));

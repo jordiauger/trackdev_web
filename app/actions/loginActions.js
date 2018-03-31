@@ -26,14 +26,6 @@ function errorLogin(error) {
 export function userLoginRequest(userData){
     return dispatch => {
         dispatch(requestLogin(userData))
-        return fetch("http://localhost:3000/api/users/login", {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        }).then(response => dispatch(receiveLogin(response.json())),
-                error => dispatch(errorLogin(error)))
+
     }
 }

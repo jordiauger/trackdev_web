@@ -8,6 +8,7 @@ import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
 import UsersPage from './UsersPage';
 import { createHistory } from 'history';
+import { View } from 'react-native'
 
 class RootApp extends Component {
   render() {
@@ -16,13 +17,22 @@ class RootApp extends Component {
           <div>
             <NavigationBar />
             <Route exact path="/" component={Main}/>
-            <Route path="/users" component={UsersPage} />
-            <Route path="/login" component={LoginPage}/>
-            <Route path={`/register/:token`} component={RegisterPage}/>
+            {
+                this.props.notLogged === true ? <View><Route path="/login" component={LoginPage}/>
+                    <Route path='/register/:token' component={RegisterPage}/></View>
+                    :
+                    <Route path="/users" component={UsersPage} />
+            }
           </div>
         </BrowserRouter>
     );
   }
 }
 
-export default connect()(RootApp)
+function mapStateToProps ({ authedUser }) {
+    return {
+        notLogged: authedUser === null
+    }
+}
+
+export default connect(mapStateToProps)(RootApp)
