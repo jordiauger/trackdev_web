@@ -1,6 +1,4 @@
 
-
-
 export function fetchUsers(){
     return fetch("http://localhost:3000/api/users", {
         method: "GET",
@@ -36,6 +34,19 @@ export function loginRequestAPI(userData){
         body: JSON.stringify(userData)
     }).then(function(response){
         return response.json()
+    })
+}
+
+
+export function logoutRequestAPI(){
+    return fetch("http://localhost:3000/api/users/logout", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(function(response){
+        return response
     })
 }
 

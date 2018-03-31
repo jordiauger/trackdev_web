@@ -1,19 +1,31 @@
-import React from 'react';
+
+import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {Nav, Navbar, NavItem} from 'react-bootstrap'
+import {Nav, Navbar, NavItem, Button} from 'react-bootstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import {connect} from 'react-redux';
+import {handleLogoutAction} from '../../../actions/authedUser';
+import {withRouter} from 'react-router-dom'
 
-function NavigationBar({ notLogged, username }){
-  return (
-    <Navbar>
-      <Navbar.Header>
-        <Navbar.Brand>
-          <Link to={'/'}>TrackDev</Link>
-        </Navbar.Brand>
-      </Navbar.Header>
-        {
-            notLogged === true ?
+class NavigationBar extends Component {
+    constructor(props){
+        super(props);
+        this.submitLogout = this.submitLogout.bind(this);
+    }
+    submitLogout() {
+        this.props.dispatch(handleLogoutAction());
+        this.props.history.push("/");
+    }
+    render() {
+        return (
+            <Navbar>
+                <Navbar.Header>
+                    <Navbar.Brand>
+                        <Link to={'/'}>TrackDev</Link>
+                    </Navbar.Brand>
+                </Navbar.Header>
+            {
+            this.props.notLogged === true ?
                 <Nav pullRight>
                     <LinkContainer to="/login">
                         <NavItem eventKey={1}>Login</NavItem>
@@ -21,22 +33,27 @@ function NavigationBar({ notLogged, username }){
                 </Nav>
                 :
                 <Navbar.Collapse>
-                    <Nav pullRight>
-                        <Navbar.Text>
-                            Hello,
-                            <Navbar.Link href="/">{username}</Navbar.Link>
-                        </Navbar.Text>
-                    </Nav>
+                    <Navbar.Text pullRight>
+                        Hello,
+                        <Navbar.Link href="/">{this.props.username}</Navbar.Link>
+                    </Navbar.Text>
+                    <Navbar.Form pullRight>
+                        <Button onClick={this.submitLogout}>Logout</Button>
+                    </Navbar.Form>
                     <Nav pullRight>
                         <LinkContainer to="/users">
                             <NavItem eventKey={1}>Users</NavItem>
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
+
             }
-    </Navbar>
-  );
+            </Navbar>
+        )
+    }
 }
+
+
 /*
 
  <Nav pullRight>
@@ -61,4 +78,4 @@ function mapStateProps ({ authedUser }) {
     }
 }
 
-export default connect(mapStateProps)(NavigationBar)
+export default connect(mapStateProps)(withRouter(NavigationBar))

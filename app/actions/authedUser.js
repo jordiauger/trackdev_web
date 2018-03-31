@@ -1,5 +1,5 @@
-import {SET_AUTHED_USER} from '../constants/Constants'
-import {loginRequestAPI} from '../utils/api'
+import {SET_AUTHED_USER, LOGOUT_AUTHED_USER} from '../constants/Constants'
+import {loginRequestAPI, logoutRequestAPI} from '../utils/api'
 
 export function setAuthedUser (user) {
     return {
@@ -12,6 +12,20 @@ export function setAuthedUser (user) {
     }
 }
 
+export function performLogout(){
+    return {
+        type: LOGOUT_AUTHED_USER
+    }
+}
+
+
+export function handleLogoutAction(){
+    return (dispatch) =>{
+        return logoutRequestAPI().then((response)=>{
+            dispatch(performLogout())
+        })
+    }
+}
 
 export function handleLoginAction(userEmails,type){
     return (dispatch) =>{
