@@ -33,13 +33,13 @@ class NavigationBar extends Component {
                 </Nav>
                 :
                 <Navbar.Collapse>
+                    <Navbar.Form pullRight>
+                        <Button onClick={this.submitLogout}>Logout</Button>
+                    </Navbar.Form>
                     <Navbar.Text pullRight>
                         Hello,
                         <Navbar.Link href="/">{this.props.username}</Navbar.Link>
                     </Navbar.Text>
-                    <Navbar.Form pullRight>
-                        <Button onClick={this.submitLogout}>Logout</Button>
-                    </Navbar.Form>
                     <Nav pullRight>
                         <LinkContainer to="/users">
                             <NavItem eventKey={1}>Users</NavItem>
