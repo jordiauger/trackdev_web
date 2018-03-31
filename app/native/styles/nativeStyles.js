@@ -26,6 +26,9 @@ export const FormStyles = StyleSheet.create({
         padding:'0.2rem',
         height:35
     },
+    dropdownFlex:{
+      height:35
+    },
     viewFlexButton:{
         flex:1,
         height:35

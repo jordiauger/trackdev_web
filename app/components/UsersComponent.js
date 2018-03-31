@@ -29,6 +29,7 @@ class UsersComponent extends React.Component {
         console.log(props);
         this.state = {
             selected : 'All',
+            typeUsersToAdd:"2",
             usersToAdd : ''
             //users:[]
         };
@@ -58,15 +59,9 @@ class UsersComponent extends React.Component {
     }
 
     onSubmit() {
-        console.log(this.state);
-        //mentre no tinguem el Picker
-        var type = "2";
-        this.props.dispatch(handleAddUserBatch(this.state.usersToAdd,type))
+        this.state.usersToAdd !== "" && this.state.usersToAdd.length > 0 ? this.props.dispatch(handleAddUserBatch(this.state.usersToAdd,this.state.typeUsersToAdd)) : null
     }
 
-    onPickerChange(){
-
-    }
 
     render() {
         var filters = ['All','Administrators','Professors','Students'];
@@ -84,14 +79,19 @@ class UsersComponent extends React.Component {
                             />
                         </View>
                         <View style={FormStyles.viewFlexButton}>
+
                             <Picker
-                                selectedValue="2"
-                                onValueChange={ this.onPickerChange }
+                                selectedValue={ this.state.typeUsersToAdd }
+                                onValueChange={ (value) => this.onChange('typeUsersToAdd', value) }
+                                style={ FormStyles.dropdownFlex }
                             >
-                                <Picker.Item value="2" label="Professors" ></Picker.Item>
-                                <Picker.Item value="3" label="Alumnes" ></Picker.Item>
-                                <Picker.Item value="1" label="Administradors" ></Picker.Item>
+
+                                    <Picker.Item key={"2"} value={"2"} label={"Professors"} />
+                                    <Picker.Item key={"3"} value={"3"} label={"Alumnes"} />
+                                    <Picker.Item key={"1"} value={"1"} label={"Administradors"} />
+
                             </Picker>
+
                         </View>
                         <View style={FormStyles.viewFlexButton}>
                             <Button onPress={this.onSubmit} title="Afegir">
