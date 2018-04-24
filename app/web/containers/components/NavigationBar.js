@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {Nav, Navbar, NavItem, Button} from 'react-bootstrap'
+import {Collapse, Nav, Navbar, NavbarBrand, NavItem, NavLink, Button} from 'reactstrap'
 import {LinkContainer} from 'react-router-bootstrap'
 import {connect} from 'react-redux';
 import {handleLogoutAction} from '../../../actions/authedUser';
@@ -14,38 +14,39 @@ class NavigationBar extends Component {
     }
     submitLogout() {
         this.props.dispatch(handleLogoutAction());
-        this.props.history.push("/");
     }
     render() {
         return (
             <Navbar>
-                <Navbar.Header>
-                    <Navbar.Brand>
-                        <Link to={'/'}>TrackDev</Link>
-                    </Navbar.Brand>
-                </Navbar.Header>
+                <NavbarBrand href="/">
+                    TrackDev
+                </NavbarBrand>
             {
             this.props.notLogged === true ?
-                <Nav pullRight>
-                    <LinkContainer to="/login">
-                        <NavItem eventKey={1}>Login</NavItem>
-                    </LinkContainer>
-                </Nav>
-                :
-                <Navbar.Collapse>
-                    <Navbar.Form pullRight>
-                        <Button onClick={this.submitLogout}>Logout</Button>
-                    </Navbar.Form>
-                    <Navbar.Text pullRight>
-                        Hello,
-                        <Navbar.Link href="/">{this.props.username}</Navbar.Link>
-                    </Navbar.Text>
-                    <Nav pullRight>
-                        <LinkContainer to="/users">
-                            <NavItem eventKey={1}>Users</NavItem>
-                        </LinkContainer>
+                <Collapse navbar>
+                    <Nav className="ml-auto" navbar>
+                        <NavItem>
+                            <NavLink tag={Link} to="/login">Login</NavLink>
+                        </NavItem>
                     </Nav>
-                </Navbar.Collapse>
+                </Collapse>
+                :
+                <Collapse navbar>
+                    <Nav className="ml-auto" navbar>
+                        <NavItem className="pull-right">
+                            <Button onClick={this.submitLogout}>Logout</Button>
+                        </NavItem>
+                        <NavItem className="pull-right">
+                            <NavLink tag={Link} to="/"><span>Hello, </span>{this.props.username}</NavLink>
+                        </NavItem>
+                        <NavItem className="pull-right">
+                            <NavLink tag={Link} to="/users">Users</NavLink>
+                        </NavItem>
+                        <NavItem className="pull-right">
+                            <NavLink tag={Link} to="/courses">Courses</NavLink>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
 
             }
             </Navbar>

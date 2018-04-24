@@ -7,8 +7,10 @@ import {connect} from 'react-redux';
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
 import UsersPage from './UsersPage';
+import CoursesPage from './CoursesPage';
 import { createHistory } from 'history';
 import { View } from 'react-native'
+import ErrorComponent from '../../components/ErrorComponent'
 
 class RootApp extends Component {
   render() {
@@ -21,10 +23,16 @@ class RootApp extends Component {
                 this.props.notLogged === true ? <View><Route path="/login" component={LoginPage}/>
                     <Route path='/register/:token' component={RegisterPage}/></View>
                     :
+                    <View>
                     <Route path="/users" component={UsersPage} />
+                    <Route path="/courses" component={CoursesPage} />
+                    </View>
             }
+              <ErrorComponent />
           </div>
+
         </BrowserRouter>
+
     );
   }
 }

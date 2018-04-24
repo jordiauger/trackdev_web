@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Row} from 'react-bootstrap'
+import {Col, Row} from 'reactstrap'
 import UsersComponent from '../../components/UsersComponent';
 import { connect } from 'react-redux';
 

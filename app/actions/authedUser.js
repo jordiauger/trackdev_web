@@ -1,5 +1,8 @@
 import {SET_AUTHED_USER, LOGOUT_AUTHED_USER} from '../constants/Constants'
 import {loginRequestAPI, logoutRequestAPI} from '../utils/api'
+import {setError} from './error'
+import { push } from 'react-router-redux'
+
 
 export function setAuthedUser (user) {
     return {
@@ -23,7 +26,8 @@ export function handleLogoutAction(){
     return (dispatch) =>{
         return logoutRequestAPI().then((response)=>{
             dispatch(performLogout())
-        })
+            dispatch(push('/'))
+        }).catch((error)=> dispatch(setError(error.message)))
     }
 }
 
@@ -31,6 +35,7 @@ export function handleLoginAction(userEmails,type){
     return (dispatch) =>{
         return loginRequestAPI(userEmails,type).then((response)=>{
             dispatch(setAuthedUser(response))
-        })
+            dispatch(push('/'))
+        }).catch((error)=> dispatch(setError(error.message)))
     }
 }

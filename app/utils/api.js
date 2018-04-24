@@ -24,29 +24,6 @@ export function deleteUserAPI(){
     })
 }
 
-export function loginRequestAPI(userData){
-    return fetch("http://localhost:3000/api/users/login", {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(userData)
-    }).then(function(response){
-        return response.json()
-    })
-}
-
-
-export function logoutRequestAPI(){
-    return fetch("http://localhost:3000/api/users/logout", {
-        method: "POST"
-    }).then(function(response){
-        return response
-    })
-}
-
-
 export function addUsersByEmailAPI(users,type){
     var usersSpitted = users.split(",");
 
@@ -76,3 +53,98 @@ export function addUsersByEmailAPI(users,type){
     })
 
 }
+
+
+export function loginRequestAPI(userData){
+    return fetch("http://localhost:3000/api/users/login", {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    }).then(function(response){
+        return response.json()
+    })
+}
+
+
+export function logoutRequestAPI(){
+    return fetch("http://localhost:3000/api/users/logout", {
+        method: "POST"
+    }).then(function(response){
+        return response
+    })
+}
+
+
+
+export function fetchCourses(){
+    return fetch("http://localhost:3000/api/courses", {
+        method: "GET",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(function(response){
+        return response.json();
+    })
+}
+
+export function fetchCourse(id){
+    return fetch("http://localhost:3000/api/courses/"+id, {
+        method: "GET",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(function(response){
+        return response.json();
+    })
+}
+
+export function addCourseAPI(course){
+    return fetch("http://localhost:3000/api/courses",{
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(
+            course
+        )
+        }).then(function(response){
+            return response.json();
+        });
+}
+
+export function updateCourseAPI(course){
+    return fetch("http://localhost:3000/api/courses/"+course.id,{
+        method: "PUT",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(course)
+    }).then(function(response){
+        return response.json();
+    });
+}
+
+
+export function deleteCourseAPI(id){
+    return fetch("http://localhost:3000/api/courses/"+id,{
+        method: "DELETE",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(course)
+    }).then(function(response){
+        return response.json();
+    });
+}
+
+
+
+

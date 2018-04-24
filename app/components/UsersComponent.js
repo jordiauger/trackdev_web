@@ -84,11 +84,9 @@ class UsersComponent extends React.Component {
                                 onValueChange={ (value) => this.onChange('typeUsersToAdd', value) }
                                 style={ FormStyles.dropdownFlex }
                             >
-
                                     <Picker.Item key={"2"} value={"2"} label={"Professors"} />
                                     <Picker.Item key={"3"} value={"3"} label={"Alumnes"} />
                                     <Picker.Item key={"1"} value={"1"} label={"Administradors"} />
-
                             </Picker>
 
                         </View>

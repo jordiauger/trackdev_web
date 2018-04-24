@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Row} from 'react-bootstrap'
+import {Col, Row} from 'reactstrap'
 import PropTypes from 'prop-types';
 import LoginForm from '../../components/LoginForm';
 import {connect} from 'react-redux';
