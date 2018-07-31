@@ -80,7 +80,7 @@ export function logoutRequestAPI(){
 
 
 export function fetchCourses(){
-    return fetch("http://localhost:3000/api/courses", {
+    return fetch("http://localhost:3000/api/assignatures", {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -92,7 +92,7 @@ export function fetchCourses(){
 }
 
 export function fetchCourse(id){
-    return fetch("http://localhost:3000/api/courses/"+id, {
+    return fetch("http://localhost:3000/api/assignatures/"+id, {
         method: "GET",
         headers: {
             'Accept': 'application/json',

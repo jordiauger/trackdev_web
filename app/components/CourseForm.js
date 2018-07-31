@@ -3,7 +3,8 @@ import { View, Text, TextInput, Button, Picker } from 'react-native'
 import PropTypes from 'prop-types'
 import {FormStyles} from '../native/styles/nativeStyles'
 import {connect} from 'react-redux'
-import { handleSaveCourse, handleUpdateCourse} from '../actions/course'
+import { handleSaveCourse, handleUpdateCourse} from '../actions/courses'
+import { unsetSelectedCourse } from '../actions/selectedCourse'
 
 
 class CourseForm extends React.Component {
@@ -18,6 +19,12 @@ class CourseForm extends React.Component {
 
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.onCancel = this.onCancel.bind(this);
+    }
+
+    componentWillMount(){
+        if (this.props.selectedCourse!==null)
+            this.updateState(this.props.selectedCourse);
     }
 
     onChange(key, value) {
@@ -28,10 +35,18 @@ class CourseForm extends React.Component {
     }
 
     onSubmit() {
-        if (this.state.id !=''){
+        if (this.state.id ==''){
             this.props.dispatch(handleSaveCourse(this.state))
         }else{
             this.props.dispatch(handleUpdateCourse(this.state))
+        }
+    }
+
+    onCancel(){
+        if (this.state.id ==''){
+            this.props.onCancel();
+        }else{
+            this.props.dispatch(unsetSelectedCourse())
         }
     }
 
@@ -44,8 +59,6 @@ class CourseForm extends React.Component {
 
 
     render() {
-        const { selectedCourse } = this.props
-        this.updateState(selectedCourse);
         return(
             <View style={FormStyles.mainDiv}>
                 <Text style={FormStyles.titleBig}>Afegir Curs</Text>
@@ -74,6 +87,8 @@ class CourseForm extends React.Component {
                     />
                 </View>
                 <Button onPress={this.onSubmit} title="Save">
+                </Button>
+                <Button onPress={this.onCancel} title="Cancel">
                 </Button>
             </View>
         );

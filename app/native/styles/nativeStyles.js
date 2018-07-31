@@ -13,6 +13,7 @@ export const FormStyles = StyleSheet.create({
         flexDirection: 'row',
         flex:1
     },
+
     viewFlexInput:{
         flex:5,
         height:35
@@ -30,6 +31,14 @@ export const FormStyles = StyleSheet.create({
       height:35
     },
     viewFlexButton:{
+        flex:1,
+        height:35
+    },
+    viewFlexText:{
+        flex:4,
+        height:35
+    },
+    viewFlexCode:{
         flex:1,
         height:35
     },

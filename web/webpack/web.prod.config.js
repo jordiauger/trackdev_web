@@ -12,6 +12,10 @@ module.exports = {
   },
   module: {
     loaders: [
+        {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
+        },
       // take all less files, compile them, and bundle them in with our js bundle
       { 
         test: /\.less$/, 

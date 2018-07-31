@@ -1,4 +1,4 @@
-import {ADD_COURSE,UPDATE_COURSE,DELETE_COURSE, RECEIVE_DATA_COURSE} from '../constants/Constants'
+import {ADD_COURSE,UPDATE_COURSE,DELETE_COURSE, RECEIVE_DATA_COURSES} from '../constants/Constants'
 
 const course = (state = {},action) => {
     switch(action.type){
@@ -9,15 +9,14 @@ const course = (state = {},action) => {
                 Object.assign({}, course, action.course));
         case DELETE_COURSE:
             return state.filter((course) => course.id !== action.id);
-        case RECEIVE_DATA_COURSE :
+        case RECEIVE_DATA_COURSES :
             return {
                 ...state,
                 ...action.courses
             }
         default:
-            return {
-                ...state
-            }
+            return state
+
     }
 }
 

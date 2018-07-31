@@ -21,7 +21,6 @@ export function performLogout(){
     }
 }
 
-
 export function handleLogoutAction(){
     return (dispatch) =>{
         return logoutRequestAPI().then((response)=>{
@@ -34,8 +33,14 @@ export function handleLogoutAction(){
 export function handleLoginAction(userEmails,type){
     return (dispatch) =>{
         return loginRequestAPI(userEmails,type).then((response)=>{
-            dispatch(setAuthedUser(response))
-            dispatch(push('/'))
+            if (response.message) {
+                dispatch(setError(response.message))
+            }else if (response.error && response.error.message)    {
+                dispatch(setError(response.error.message))
+            }else {
+                dispatch(setAuthedUser(response))
+                dispatch(push('/'))
+            }
         }).catch((error)=> dispatch(setError(error.message)))
     }
 }

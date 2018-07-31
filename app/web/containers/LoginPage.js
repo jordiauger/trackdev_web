@@ -8,7 +8,7 @@ class LoginPage extends React.Component {
   render() {
     return (
       <Row>
-        <Col md={4} mdOffset={4}>
+        <Col md={{ size: 4, offset: 4 }}>
           <LoginForm />
         </Col>
       </Row>

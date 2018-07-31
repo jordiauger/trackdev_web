@@ -47,7 +47,7 @@ export function handleReceiveDataCourses(){
     }
 }
 
-export function handleAddCourse(course){
+export function handleSaveCourse(course){
     return (dispatch) =>{
         return addCourseAPI(course).then((response)=>{
             dispatch(unsetCourseAction())

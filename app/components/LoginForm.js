@@ -28,7 +28,7 @@ class LoginForm extends React.Component{
 
     onSubmit() {
         this.props.dispatch(handleLoginAction(this.state))
-        this.props.history.push("/");
+        //this.props.history.push("/");
     }
 
     render() {

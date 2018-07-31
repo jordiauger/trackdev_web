@@ -7,7 +7,7 @@ class UsersPage extends React.Component {
     render() {
         return (
             <Row>
-                <Col md={6} mdOffset={3}>
+                <Col md={{ size: 6, offset: 3 }}>
                     <UsersComponent />
                 </Col>
             </Row>

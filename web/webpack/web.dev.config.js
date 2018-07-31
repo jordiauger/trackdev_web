@@ -21,6 +21,10 @@ module.exports = {
   },
   module: {
     loaders: [
+        {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
+        },
       // take all less files, compile them, and bundle them in with our js bundle
       { 
         test: /\.less$/, 
@@ -35,7 +39,7 @@ module.exports = {
         query: {
             presets: ['env', 'react'],
             plugins: ['react-native-web', 'transform-flow-strip-types', 'babel-plugin-styled-components', 'babel-plugin-root-import']
-        },
+        }
       },{
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [

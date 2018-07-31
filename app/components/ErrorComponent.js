@@ -7,6 +7,7 @@ import { removeError } from '../actions/error'
 class ErrorComponent extends React.Component {
     constructor(props){
         super(props)
+        this.removeError = this.removeError.bind(this);
     }
 
     removeError(){
@@ -17,7 +18,7 @@ class ErrorComponent extends React.Component {
         const { error } = this.props
         return (
             error ?
-            <View className="error-wrapper" onClick={this.removeError()}>
+            <View className="error-wrapper" onClick={this.removeError}>
                 <Text className="error">{error}</Text>
             </View>
             :

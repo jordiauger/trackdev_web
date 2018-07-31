@@ -17,7 +17,7 @@ class NavigationBar extends Component {
     }
     render() {
         return (
-            <Navbar>
+            <Navbar light expand="md">
                 <NavbarBrand href="/">
                     TrackDev
                 </NavbarBrand>
@@ -54,22 +54,6 @@ class NavigationBar extends Component {
     }
 }
 
-
-/*
-
- <Nav pullRight>
- {
- notLogged === true ?
- <LinkContainer to="/login">
- <NavItem eventKey={1}>Login</NavItem>
- </LinkContainer>
- :
- <LinkContainer to="/users">
- <NavItem eventKey={1}>Users</NavItem>
- </LinkContainer>
- }
- </Nav>
- */
 function mapStateProps ({ authedUser }) {
     let username;
     authedUser ? username =  authedUser.name : null;
